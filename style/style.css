@@ -1,0 +1,555 @@
+     /* Coloque o CSS aqui para testar rápido ou no seu style.css */
+     :root {
+         /* Default: Dark Mode */
+         --bg-color: #0F0A1A;
+         --nav-bg: rgba(26, 20, 41, 0.8);
+         --text-primary: #F5F3FF;
+         --text-secondary: #94A3B8;
+         --accent-color: #8B5CF6;
+         --border-color: rgba(139, 92, 246, 0.2);
+     }
+
+     body.light-mode {
+         --bg-color: #F8F7FF;
+         --nav-bg: rgba(255, 255, 255, 0.8);
+         --text-primary: #1E1B4B;
+         --text-secondary: #64748B;
+         --accent-color: #6D28D9;
+         --border-color: rgba(109, 40, 217, 0.2);
+     }
+
+     body {
+         margin: 0;
+         padding: 0;
+         box-sizing: none;
+         background-color: var(--bg-color);
+         color: var(--text-primary);
+         font-family: 'Inter', sans-serif;
+         transition: background 0.3s ease, color 0.3s ease;
+     }
+
+     .header {
+         display: flex;
+         justify-content: space-evenly;
+         align-items: center;
+         padding: 0 5%;
+         height: 80px;
+         background: var(--nav-bg);
+         backdrop-filter: blur(10px);
+         position: fixed;
+         top: 0;
+         width: 90%;
+         z-index: 1000;
+         border-bottom: 1px solid var(--border-color);
+     }
+
+     .header-brand {
+         font-family: 'JetBrains Mono';
+         font-weight: bold;
+     }
+
+     .header-utilitarios {
+         display: flex;
+         flex-direction: row;
+         gap: 24px;
+     }
+
+     .header-brand span {
+         color: var(--accent-color);
+     }
+
+     .header-nav {
+         display: flex;
+         align-items: center;
+         gap: 20px;
+     }
+
+     .header-nav-links {
+         display: flex;
+         flex-direction: column;
+         gap: 150px;
+     }
+
+     .social-item {
+         display: flex;
+         align-items: center;
+         background: rgba(139, 92, 246, 0.1);
+         border: 1px solid rgba(139, 92, 246, 0.2);
+         padding: 8px;
+         border-radius: 12px;
+         color: var(--text-primary);
+         text-decoration: none;
+         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+         overflow: hidden;
+         /* Importante para esconder o texto */
+         max-width: 24px;
+         /* Começa apenas com o tamanho do ícone */
+     }
+
+     .social-item .icon {
+         display: flex;
+         align-items: center;
+         min-width: 24px;
+     }
+
+     .social-username {
+         font-family: 'JetBrains Mono', monospace;
+         font-size: 0.8rem;
+         margin-left: 0;
+         opacity: 0;
+         white-space: nowrap;
+         transition: all 0.3s ease;
+     }
+
+     /* Estado de Hover */
+     .social-item:hover {
+         max-width: 250px;
+         /* Expande para caber o texto */
+         padding: 8px 16px;
+         background: rgba(139, 92, 246, 0.2);
+     }
+
+     .social-item:hover .social-username {
+         opacity: 1;
+         margin-left: 10px;
+     }
+
+     .header-actions {
+         display: flex;
+         align-items: center;
+         gap: 16px;
+         flex-shrink: 0;
+     }
+
+     .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 100%;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 24px;
+     }
+
+     .theme-btn {
+         background: rgba(139, 92, 246, 0.05);
+         border: none;
+         padding: 6px;
+         border-radius: 8px;
+         cursor: pointer;
+         color: var(--text-primary);
+         display: flex;
+         align-items: center;
+         border: 1px solid var(--border-color);
+         transition: all 0.3s ease;
+     }
+
+     .theme-btn:hover {
+         border-color: var(--accent-color);
+         color: var(--text-secondary);
+     }
+
+     .theme-btn .sun-icon,
+     .theme-btn .moon-icon {
+         transition: all 0.3s ease;
+         color: var(--text-secondary);
+     }
+
+     .theme-btn:hover .sun-icon,
+     .theme-btn:hover .moon-icon {
+         color: var(--text-primary);
+     }
+
+     /* Efeito de tema */
+     .sun-icon {
+         display: block;
+     }
+
+     .moon-icon {
+         display: none;
+     }
+
+     body.light-mode .sun-icon {
+         display: none;
+     }
+
+     body.light-mode .moon-icon {
+         display: block;
+     }
+
+     /* Container Linguagem */
+     .lang-container {
+         position: relative;
+         font-family: 'JetBrains Mono', monospace;
+         font-size: 0.75rem;
+         cursor: pointer;
+     }
+
+     /* O que aparece no Header */
+     .lang-current {
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         padding: 10px 12px;
+         background: rgba(139, 92, 246, 0.05);
+         border: 1px solid var(--border-color);
+         border-radius: 8px;
+         color: var(--text-secondary);
+         transition: all 0.3s ease;
+     }
+
+     .lang-current:hover {
+         color: var(--text-primary);
+         border-color: var(--accent-color);
+     }
+
+     /* O Menu que aparece no Hover */
+     .lang-dropdown {
+         position: absolute;
+         top: 110%;
+         /* Aparece logo abaixo */
+         right: 0;
+         background: var(--bg-color);
+         border: 1px solid var(--border-color);
+         border-radius: 8px;
+         min-width: 140px;
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+         opacity: 0;
+         visibility: hidden;
+         transform: translateY(10px);
+         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+         z-index: 10;
+     }
+
+     .lang-container:hover .lang-dropdown {
+         opacity: 1;
+         visibility: visible;
+         transform: translateY(0);
+     }
+
+     /* Links dentro do Dropdown */
+     .lang-dropdown a {
+         display: block;
+         padding: 10px 15px;
+         color: var(--text-secondary);
+         text-decoration: none;
+         transition: background 0.2s, color 0.2s;
+     }
+
+     .lang-dropdown a:hover {
+         background: rgba(139, 92, 246, 0.1);
+         color: var(--accent-color);
+     }
+
+     .lang-dropdown a.active {
+         color: var(--accent-color);
+         font-weight: bold;
+     }
+
+     /* Ajuste de ícones menores */
+     .size-16 {
+         width: 16px;
+         height: 16px;
+     }
+
+     .size-14 {
+         width: 14px;
+         height: 14px;
+     }
+
+
+     /* dwdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+     .hero-center {
+
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+
+         min-height: 100vh;
+         position: relative;
+         overflow: hidden;
+
+     }
+     .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 96px;
+     }
+     .wave {
+         position: absolute;
+         bottom: -1px;
+         left: 0;
+         width: 100%;
+         height: auto;
+         display: block;
+         pointer-events: none;
+     }
+
+     /* padrão (light) */
+     .scroll-svg {
+         color: var(--text-primary);
+     }
+
+     /* dark mode automático */
+     @media (prefers-color-scheme: dark) {
+         .scroll-svg {
+             color: var(--text-primary);
+             /* roxo mais claro */
+         }
+     }
+
+     .scroll-svg {
+         position: absolute;
+
+         bottom: 60px;
+         left: 50%;
+         transform: translateX(-50%);
+
+         z-index: 2;
+     }
+
+     .badge {
+         background: #f5f3ff31;
+         /* filter: blur(1px); */
+         color: #6d28d9;
+         padding: 8px 16px;
+         border-radius: 20px;
+         font-size: 0.85rem;
+         font-weight: 600;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         margin-bottom: 1.5rem;
+     }
+
+     /* Título Impactante */
+     .hero-center h1 {
+         font-size: clamp(2.5rem, 5vw, 4.5rem);
+         /* Tamanho responsivo */
+         font-weight: 800;
+         /* Extra Bold */
+         color: var(--text-primary);
+         line-height: 1.1;
+         margin-bottom: 1.5rem;
+     }
+
+     /* O Gradient Roxo */
+     .gradient-text {
+         background: linear-gradient(90deg, #6d28d9, #a855f7);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+     }
+
+     /* Subtítulo */
+     .hero-center p {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         font-size: 1.2rem;
+         color: var(--text-secondary);
+         max-width: 920px;
+         margin-bottom: 2.5rem;
+         line-height: 1.6;
+     }
+
+     /* dwdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+
+     /* Overlay (Fundo escurecido) */
+     .modal-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.5);
+         backdrop-filter: blur(5px);
+         /* Efeito de desfoque */
+         display: none;
+         /* Escondido por padrão */
+         justify-content: center;
+         align-items: center;
+         z-index: 9999;
+     }
+
+     /* O Card do Popup */
+     .modal-card {
+         background: white;
+         padding: 2rem;
+         border-radius: 16px;
+         width: 90%;
+         max-width: 400px;
+         position: relative;
+         text-align: center;
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+         animation: fadeIn 0.3s ease-out;
+     }
+
+     @keyframes fadeIn {
+         from {
+             opacity: 0;
+             transform: translateY(-20px);
+         }
+
+         to {
+             opacity: 1;
+             transform: translateY(0);
+         }
+     }
+
+     /* Botão de Fechar */
+     .close-btn {
+         position: absolute;
+         top: 15px;
+         right: 15px;
+         background: none;
+         border: none;
+         font-size: 24px;
+         cursor: pointer;
+         color: #666;
+     }
+
+     /* Lista de Links */
+     .contact-links {
+         display: flex;
+         flex-direction: column;
+         gap: 12px;
+         margin-top: 20px;
+     }
+
+     .contact-item {
+         display: flex;
+         align-items: center;
+         padding: 12px 20px;
+         border: 2px solid #e0e0e0;
+         border-radius: 12px;
+         text-decoration: none;
+         color: #333;
+         font-weight: 600;
+         transition: all 0.3s ease;
+     }
+
+     /* Hover effect usando o seu roxo */
+     .contact-item:hover {
+         border-color: #6d28d9;
+         /* Cor roxa do seu projeto */
+         background: #f5f3ff;
+         transform: translateX(5px);
+     }
+
+     .contact-item i {
+         font-size: 20px;
+         margin-right: 15px;
+         color: #6d28d9;
+     }
+
+     .sec2 {
+         height: 100vh;
+         background-color: #7C42E8;
+     }
+
+     .cta-group {
+         display: flex;
+         gap: 16px;
+         justify-content: center;
+         margin-top: 30px;
+         flex-wrap: wrap;
+     }
+
+     /* BASE */
+     .cta-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* base */
+.btn {
+    position: relative;
+    padding: 14px 30px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+/* 🔥 BOTÃO PRINCIPAL (glow animado) */
+.btn-glow {
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    color: white;
+    border: none;
+}
+
+/* efeito brilho passando */
+.btn-glow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.btn-glow:hover::before {
+    left: 100%;
+}
+
+/* glow externo */
+.btn-glow:hover {
+    box-shadow: 0 0 20px rgba(124, 66, 232, 0.7),
+                0 0 40px rgba(124, 66, 232, 0.5);
+    transform: translateY(-3px);
+}
+
+/* ✨ BOTÃO OUTLINE PREMIUM */
+.btn-outline-glow {
+    background: transparent;
+    color: #7C42E8;
+    border: 2px solid rgba(124, 66, 232, 0.5);
+}
+
+/* borda animada */
+.btn-outline-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    padding: 2px;
+
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* hover */
+.btn-outline-glow:hover::before {
+    opacity: 1;
+}
+
+.btn-outline-glow:hover {
+    color: white;
+    background: rgba(124, 66, 232, 0.1);
+    transform: translateY(-3px);
+}
