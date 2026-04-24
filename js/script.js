@@ -67,3 +67,11 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+function toggleMenu() {
+    const menu = document.querySelector(".header-utilitarios");
+    const btn = document.querySelector(".menu-toggle");
+
+    menu.classList.toggle("active");
+    btn.classList.toggle("active");
+}
