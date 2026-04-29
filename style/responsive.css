@@ -4,14 +4,23 @@
 }
 
 @media (max-width: 768px) {
+    main {
+        padding-top: 70px;
+        /* A mesma altura do seu header */
+    }
 
     /* header */
     .header {
         position: fixed;
+        top: 0;
+        /* Garante que ele esteja no topo */
+        left: 0;
         width: 100%;
         height: 70px;
         padding: 0 16px;
         z-index: 1001;
+        background: var(--bg-color);
+        /* Certifique-se de ter um fundo para não ver o texto passando por baixo */
     }
 
     .header-container {
@@ -62,10 +71,13 @@
         opacity: 0;
         pointer-events: none;
 
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.25s ease;
+
         z-index: 1000;
     }
-    
+
     .header-utilitarios.active {
         transform: translateY(0) scale(1);
         opacity: 1;
@@ -119,3 +131,24 @@
 .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
+
+/* 6. Ajuste da Hero Section no Mobile */
+    .hero-center {
+        min-height: calc(100vh - 80px);
+        padding: 40px 20px;
+    }
+
+    .hero-center h1 {
+        font-size: 2.5rem; /* Diminui o título para não quebrar feio */
+    }
+
+    .cta-group {
+        flex-direction: column; /* Botões um em cima do outro no celular */
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
