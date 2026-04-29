@@ -1,3 +1,9 @@
+     * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+     }
+
      /* Coloque o CSS aqui para testar rápido ou no seu style.css */
      :root {
          /* Default: Dark Mode */
@@ -272,13 +278,15 @@
          overflow: hidden;
 
      }
+
      .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 96px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         margin-bottom: 96px;
      }
+
      .wave {
          position: absolute;
          bottom: -1px;
@@ -461,96 +469,93 @@
 
      /* BASE */
      .cta-group {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
+         display: flex;
+         gap: 20px;
+         justify-content: center;
+         margin-top: 30px;
+         flex-wrap: wrap;
+     }
 
-/* base */
-.btn {
-    position: relative;
-    padding: 14px 30px;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.3s;
-}
+     /* base */
+     .btn {
+         position: relative;
+         padding: 14px 30px;
+         border-radius: 14px;
+         font-weight: 600;
+         font-size: 15px;
+         cursor: pointer;
+         text-decoration: none;
+         overflow: hidden;
+         transition: 0.3s;
+     }
 
-/* 🔥 BOTÃO PRINCIPAL (glow animado) */
-.btn-glow {
-    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
-    color: white;
-    border: none;
-}
+     /* 🔥 BOTÃO PRINCIPAL (glow animado) */
+     .btn-glow {
+         background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+         color: white;
+         border: none;
+     }
 
-/* efeito brilho passando */
-.btn-glow::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.4),
-        transparent
-    );
-    transition: 0.6s;
-}
+     /* efeito brilho passando */
+     .btn-glow::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: -100%;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(120deg,
+                 transparent,
+                 rgba(255, 255, 255, 0.4),
+                 transparent);
+         transition: 0.6s;
+     }
 
-.btn-glow:hover::before {
-    left: 100%;
-}
+     .btn-glow:hover::before {
+         left: 100%;
+     }
 
-/* glow externo */
-.btn-glow:hover {
-    box-shadow: 0 0 20px rgba(124, 66, 232, 0.7),
-                0 0 40px rgba(124, 66, 232, 0.5);
-    transform: translateY(-3px);
-}
+     /* glow externo */
+     .btn-glow:hover {
+         box-shadow: 0 0 20px rgba(124, 66, 232, 0.7),
+             0 0 40px rgba(124, 66, 232, 0.5);
+         transform: translateY(-3px);
+     }
 
-/* ✨ BOTÃO OUTLINE PREMIUM */
-.btn-outline-glow {
-    background: transparent;
-    color: #7C42E8;
-    border: 2px solid rgba(124, 66, 232, 0.5);
-}
+     /* ✨ BOTÃO OUTLINE PREMIUM */
+     .btn-outline-glow {
+         background: transparent;
+         color: #7C42E8;
+         border: 2px solid rgba(124, 66, 232, 0.5);
+     }
 
-/* borda animada */
-.btn-outline-glow::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    padding: 2px;
+     /* borda animada */
+     .btn-outline-glow::before {
+         content: "";
+         position: absolute;
+         inset: 0;
+         border-radius: 14px;
+         padding: 2px;
 
-    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
-    
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+         background: linear-gradient(135deg, #8B5CF6, #6D28D9);
 
-    opacity: 0;
-    transition: 0.3s;
-}
+         -webkit-mask:
+             linear-gradient(#fff 0 0) content-box,
+             linear-gradient(#fff 0 0);
+         -webkit-mask-composite: xor;
+         mask-composite: exclude;
 
-/* hover */
-.btn-outline-glow:hover::before {
-    opacity: 1;
-}
+         opacity: 0;
+         transition: 0.3s;
+     }
 
-.btn-outline-glow:hover {
-    color: white;
-    background: rgba(124, 66, 232, 0.1);
-    transform: translateY(-3px);
-}
+     /* hover */
+     .btn-outline-glow:hover::before {
+         opacity: 1;
+     }
 
+     .btn-outline-glow:hover {
+         color: white;
+         background: rgba(124, 66, 232, 0.1);
+         transform: translateY(-3px);
+     }

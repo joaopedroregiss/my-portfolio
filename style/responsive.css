@@ -1,14 +1,21 @@
 /* ===== MOBILE CLEAN ===== */
+.menu-toggle {
+    display: none;
+}
+
 @media (max-width: 768px) {
 
     /* header */
     .header {
+        position: fixed;
         width: 100%;
         height: 70px;
         padding: 0 16px;
+        z-index: 1001;
     }
 
     .header-container {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -36,31 +43,44 @@
     /* MENU (overlay real) */
     .header-utilitarios {
         position: fixed;
-        inset: 0;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
 
         background: var(--bg-color);
+        backdrop-filter: blur(10px);
 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 24px;
+
+        transform: translateY(-30px) scale(0.98);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+    }
+    
+    .header-utilitarios.active {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+
+    /* NAV */
+    .header-nav {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 30px;
-
-        transform: translateX(100%);
-        transition: 0.4s ease;
-
-        z-index: 1000;
-    }
-
-    .header-utilitarios.active {
-        transform: translateX(0);
-    }
-
-    /* NAV */
-    .header-nav {
-        flex-direction: column;
-        align-items: center;
         gap: 20px;
+        margin-top: 10px;
     }
 
     .social-item {
@@ -76,8 +96,9 @@
 
     /* actions */
     .header-actions {
-        flex-direction: column;
-        gap: 16px;
+        margin-top: 10px;
+        flex-direction: row;
+        gap: 86px;
     }
 
     /* remove hover bug */
@@ -90,9 +111,11 @@
 .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
+
 .menu-toggle.active span:nth-child(2) {
     opacity: 0;
 }
+
 .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
